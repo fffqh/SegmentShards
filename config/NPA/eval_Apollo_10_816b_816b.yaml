@@ -1,0 +1,48 @@
+points_per_side: 8
+points_per_batch: 16
+pred_iou_thresh: 0.88
+stability_score_thresh: 0.85
+stability_score_offset: 1.0
+box_nms_thresh: 0.7
+crop_n_layers: 0
+crop_nms_thresh: 0.7
+crop_overlap_ratio: 0.34
+crop_n_points_downscale_factor: 1
+point_grids: ~
+min_mask_region_area: 0
+output_mode: binary_mask
+return_logists: true
+
+adv_e: 0.01
+adv_epsilon: 0.2
+adv_iter: 40
+
+model_type: vit_b #vit_h
+checkpoints:
+  vit_b: "./checkpoints/sam_vit_b01ec64.pth"
+  vit_h: "./checkpoints/sam_vit_h_4b8939.pth"
+
+# dataset
+dataset_type: adv
+dataset_root: /root/autodl-tmp/advDataset/advApollo
+annfile_path: ~ #/root/autodl-tmp/coco2017/annotations/instances_val2017.json
+dataset_adv_root: /root/autodl-tmp/advout_0.01_0.2_40_8_16_0.85_npa/Apollo
+
+eval:
+  dataset_name: Apollo_0.01_0.2_40_816b_npa_816b
+  print_miou: true
+  print_ssim: true
+  save_csv: true
+  csv_dir: ./
+
+attack:
+  target_image_path: ./images/shenghao.jpg
+  advout_path: /root/autodl-tmp/advout
+  attack_name: Apollo
+  image_number: 100000
+
+predict:
+  dir_path: /root/autodl-tmp/advout_0.01_0.2_40_8_16_0.85_npa/Apollo
+  out_path: /root/autodl-tmp/predict/advout_0.01_0.2_40_8_16_0.85_npa/Apollo_816
+  reset: false #是否重新开始，否则out_path中已有的图片不进行重新检测
+

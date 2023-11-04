@@ -1,0 +1,47 @@
+points_per_side: 16
+points_per_batch: 64
+pred_iou_thresh: 0.88
+stability_score_thresh: 0.85
+stability_score_offset: 1.0
+box_nms_thresh: 0.7
+crop_n_layers: 0
+crop_nms_thresh: 0.7
+crop_overlap_ratio: 0.34
+crop_n_points_downscale_factor: 1
+point_grids: ~
+min_mask_region_area: 0
+output_mode: binary_mask
+return_logists: true
+
+adv_e: 0.01
+adv_epsilon: 0.2
+adv_iter: 40
+
+model_type: vit_b #vit_h
+checkpoints:
+  vit_b: "./checkpoints/sam_vit_b01ec64.pth"
+  vit_h: "./checkpoints/sam_vit_h_4b8939.pth"
+
+# dataset
+dataset_type: adv
+dataset_root: ./advDataset/advApollo
+annfile_path: ~ 
+dataset_adv_root: ./out/advout_0.01_0.2_40_8_64_0.85/Apollo
+
+eval:
+  dataset_name: Apollo_0.01_0.2_40_864b_pa_1664b
+  print_miou: true
+  print_ssim: true
+  save_csv: true
+  csv_dir: ./
+
+attack:
+  target_image_path: ./images/shenghao.jpg
+  advout_path: ./out/advout
+  attack_name: Apollo
+  image_number: 100000
+
+predict:
+  dir_path: ./out/advout_0.01_0.2_40_8_64_0.85/Apollo
+  out_path: ./out/predict/advout_0.01_0.2_40_8_64_0.85/Apollo_1664
+  reset: false 
