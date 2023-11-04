@@ -19,12 +19,12 @@ To generate the adversarial example(s) in the paper, run this command:
 - PBA
 
   ```bash
-  python attack_pba.py --config config/PBAM/Apollo_10_816b.yaml
+  python attack_pba.py --config config/PBA/Apollo_10_816b.yaml
   ```
 - SPA
 
   ```bash
-  python attack.py --config config/SPBA/Apollo_10_816b.yaml
+  python attack.py --config config/SPA/Apollo_10_816b.yaml
   ```
 - PA
 
@@ -70,7 +70,7 @@ Then, put them into checkpoints directory, your project tree may like:
 │   ├── sam_vit_b01ec64.pth
 │   └── sam_vit_h_4b8939.pth
 ├── add_permutations.ipynb
-├── attack_pbam.py
+├── attack_pba.py
 ├── attack_npa.py
 ├── attack.py
 |...
