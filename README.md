@@ -16,12 +16,12 @@ env : Ubuntu 18.04  python 3.8  Pytorch 1.8.1+cu111
 
 To generate the adversarial example(s) in the paper, run this command:
 
-- PBAM
+- PBA
 
   ```bash
-  python attack_pbam.py --config config/PBAM/Apollo_10_816b.yaml
+  python attack_pba.py --config config/PBAM/Apollo_10_816b.yaml
   ```
-- SPBA
+- SPA
 
   ```bash
   python attack.py --config config/SPBA/Apollo_10_816b.yaml
@@ -45,12 +45,12 @@ To evaluate the adversarial examples generated, run:
 
 ```bash
 # calculate miou
-python eval_miou.py --config config/PBAM/eval_Apollo_10_816b_816b.yaml
+python eval_miou.py --config config/PBA/eval_Apollo_10_816b_816b.yaml
 ```
 
 ```bash
 # calculate ssim
-python eval_ssim.py --config config/PBAM/Apollo_10_816b.yaml
+python eval_ssim.py --config config/PBA/Apollo_10_816b.yaml
 ```
 
 > the output of evaluation is a file named *.csv
@@ -78,6 +78,7 @@ Then, put them into checkpoints directory, your project tree may like:
 ```
 
 ## Download Datasets
+
 You can download datasets from [Apollo Dataset link](https://apolloscape.auto/trajectory.html#to_download_href), [BDD100k Dataset link](https://bair.berkeley.edu/blog/2018/05/30/bdd/), [CBCL Dataset link](http://cbcl.mit.edu/software-datasets/streetscenes/).
 
 You can put these data in advDataset directory. Your project tree may like:
@@ -93,7 +94,7 @@ You can put these data in advDataset directory. Your project tree may like:
 │   └── advBDD
 │       └──...
 ├── add_permutations.ipynb
-├── attack_pbam.py
+├── attack_pba.py
 ├── attack_npa.py
 ├── attack.py
 |...
