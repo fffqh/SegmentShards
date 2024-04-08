@@ -1,6 +1,6 @@
 # Segment Shards
 
-This repository is the official implementation of Segment Shards: Prompt Batch Adversarial Attack with Momentum to Segment Anything Model.
+This repository is the official implementation of Segment Shards: Prompt Batch Adversarial Attack to Segment Anything Model.
 
 ## Requirements
 
